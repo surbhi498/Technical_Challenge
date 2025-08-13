@@ -27,5 +27,82 @@ accessed from the HuggingFace dataset repository:
 - Test split:  
   `hf://datasets/mteb/free-spoken-digit-dataset/data/test-00000-of-00001.parquet`
 
+Model Evaluation
+This project tackles spoken digit recognition (0–9) using lightweight audio features and a fast, interpretable model.
+The dataset is Free Spoken Digit Dataset, split into training and test sets.
+
+⚙️ Modeling Choices
+Features: Log-Mel spectrogram statistics (mean, std, delta), ~120 dimensions per clip → efficient, low-latency input.
+
+Model: Logistic Regression with L2 regularization — minimal computational footprint, ideal for rapid prototyping.
+
+Why it works: Spoken digits have consistent phonetic patterns; compact spectral features + linear classifier capture these effectively.
+
+📈 Cross-Validation Results (5-fold, Training Set)
+Metric	Value
+CV Accuracy	0.9678
+Feature Matrix Shape	(2700, 120)
+
+Classification Report (Macro avg F1 ≈ 0.968)
+
+<details> <summary>View Report</summary>
+
+               precision    recall  f1-score   support
+0              0.978       0.970    0.974     270
+1              0.977       0.959    0.968     270
+2              0.967       0.963    0.965     270
+3              0.928       0.956    0.942     270
+4              0.993       0.989    0.991     270
+5              0.989       0.989    0.989     270
+6              0.947       0.919    0.932     270
+7              0.981       0.974    0.978     270
+8              0.949       0.970    0.960     270
+9              0.971       0.989    0.980     270
+</details>
+🧪 Test Set Results
+Metric	Value
+Test Accuracy	0.9733
+
+Classification Report (Macro avg F1 ≈ 0.97)
+
+<details> <summary>View Report</summary>
+
+               precision    recall  f1-score   support
+0              0.97        1.00     0.98      30
+1              1.00        0.97     0.98      30
+2              1.00        1.00     1.00      30
+3              0.96        0.90     0.93      30
+4              0.97        1.00     0.98      30
+5              1.00        1.00     1.00      30
+6              0.90        0.90     0.90      30
+7              1.00        1.00     1.00      30
+8              0.97        0.97     0.97      30
+9              0.97        1.00     0.98      30
+</details>
+🚀 Responsiveness
+End-to-end inference time (feature extraction → prediction) is milliseconds once the model is loaded.
+
+Suitable for real-time digit recognition.
+
+🧠 LLM Collaboration
+This solution was developed with step-by-step prompting, debugging, and architectural reasoning using an LLM.
+The process included:
+
+Feature & model selection advice
+
+Code optimization & modular design
+
+Debugging microphone integration
+
+Improving evaluation pipeline & result clarity
+
+💡 Creative Extensions
+Optional microphone input for live testing
+
+Potential to simulate noise and test robustness
+
+Modular code for quick swap to other classifiers (SVM, CNN)
+  
+
 ---
 
