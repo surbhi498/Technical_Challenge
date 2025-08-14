@@ -111,3 +111,9 @@ Modular code for quick swap to other classifiers (SVM, CNN)
 
 ---
 
+## 📹 Development Process Video
+
+You can watch my development process here:  
+[![Watch the video](https://img.youtube.com/vi/kDBGwjCuaR4/0.jpg)](https://youtu.be/kDBGwjCuaR4)
+
+
