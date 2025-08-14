@@ -38,47 +38,52 @@ Model: Logistic Regression with L2 regularization — minimal computational foot
 
 Why it works: Spoken digits have consistent phonetic patterns; compact spectral features + linear classifier capture these effectively.
 
-📈 Cross-Validation Results (5-fold, Training Set)
-Metric	Value
-CV Accuracy	0.9678
-Feature Matrix Shape	(2700, 120)
+## 📊 Model Performance
 
-Classification Report (Macro avg F1 ≈ 0.968)
+### **Cross-Validation Results**  
+**CV Accuracy:** `0.9678`  
+**Macro Avg F1:** `0.968`  
 
-<details> <summary>View Report</summary>
+| Digit | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.978     | 0.970  | 0.974    | 270     |
+| 1     | 0.977     | 0.959  | 0.968    | 270     |
+| 2     | 0.967     | 0.963  | 0.965    | 270     |
+| 3     | 0.928     | 0.956  | 0.942    | 270     |
+| 4     | 0.993     | 0.989  | 0.991    | 270     |
+| 5     | 0.989     | 0.989  | 0.989    | 270     |
+| 6     | 0.947     | 0.919  | 0.932    | 270     |
+| 7     | 0.981     | 0.974  | 0.978    | 270     |
+| 8     | 0.949     | 0.970  | 0.960    | 270     |
+| 9     | 0.971     | 0.989  | 0.980    | 270     |
 
-               precision    recall  f1-score   support
-0              0.978       0.970    0.974     270
-1              0.977       0.959    0.968     270
-2              0.967       0.963    0.965     270
-3              0.928       0.956    0.942     270
-4              0.993       0.989    0.991     270
-5              0.989       0.989    0.989     270
-6              0.947       0.919    0.932     270
-7              0.981       0.974    0.978     270
-8              0.949       0.970    0.960     270
-9              0.971       0.989    0.980     270
-</details>
-🧪 Test Set Results
-Metric	Value
-Test Accuracy	0.9733
+---
 
-Classification Report (Macro avg F1 ≈ 0.97)
+### **Test Set Results**  
+**Test Accuracy:** `0.9733`  
+**Macro Avg F1:** `0.970`  
 
-<details> <summary>View Report</summary>
+| Digit | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.97      | 1.00   | 0.98     | 30      |
+| 1     | 1.00      | 0.97   | 0.98     | 30      |
+| 2     | 1.00      | 1.00   | 1.00     | 30      |
+| 3     | 0.96      | 0.90   | 0.93     | 30      |
+| 4     | 0.97      | 1.00   | 0.98     | 30      |
+| 5     | 1.00      | 1.00   | 1.00     | 30      |
+| 6     | 0.90      | 0.90   | 0.90     | 30      |
+| 7     | 1.00      | 1.00   | 1.00     | 30      |
+| 8     | 0.97      | 0.97   | 0.97     | 30      |
+| 9     | 0.97      | 1.00   | 0.98     | 30      |
 
-               precision    recall  f1-score   support
-0              0.97        1.00     0.98      30
-1              1.00        0.97     0.98      30
-2              1.00        1.00     1.00      30
-3              0.96        0.90     0.93      30
-4              0.97        1.00     0.98      30
-5              1.00        1.00     1.00      30
-6              0.90        0.90     0.90      30
-7              1.00        1.00     1.00      30
-8              0.97        0.97     0.97      30
-9              0.97        1.00     0.98      30
-</details>
+---
+
+**✅ Key Highlights**
+- High accuracy on both training (CV) and test sets, indicating strong generalization.
+- Most digits achieve near-perfect precision and recall.
+- Slightly lower recall for digit `6` and digit `3`, indicating minor confusion in similar-sounding classes.
+- Lightweight model — fast inference suitable for real-time spoken digit recognition.
+
 🚀 Responsiveness
 End-to-end inference time (feature extraction → prediction) is milliseconds once the model is loaded.
 
